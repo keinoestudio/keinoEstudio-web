@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/funnel-display':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource-variable/funnel-sans':
+        specifier: ^5.2.8
+        version: 5.2.8
       astro:
         specifier: ^5.13.9
         version: 5.13.9(@types/node@24.5.2)(rollup@4.52.0)(sass@1.93.0)(typescript@5.9.2)
@@ -213,6 +219,12 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/funnel-display@5.2.8':
+    resolution: {integrity: sha512-krvlZmy6EoFdmCKldTHpAzxxt5gFRXebueyDZ7DUIQ37YRAD8SrH0ljwoLOL/ZSCD5jHqKS6EhFPXLuhuJrOGA==}
+
+  '@fontsource-variable/funnel-sans@5.2.8':
+    resolution: {integrity: sha512-HHicOhwA5IcF29JYO8koOUdVAePvp0Efi7dQ/TxY2WNW7cdE7ffRzw52GxKT3ksV/HShssYBFT5/etjFujEgtQ==}
 
   '@img/colour@1.0.0':
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
@@ -1747,6 +1759,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.10':
     optional: true
+
+  '@fontsource-variable/funnel-display@5.2.8': {}
+
+  '@fontsource-variable/funnel-sans@5.2.8': {}
 
   '@img/colour@1.0.0':
     optional: true
