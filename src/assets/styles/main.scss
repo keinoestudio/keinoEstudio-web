@@ -1,5 +1,8 @@
+@use 'base';
 @use 'vars';
+@forward 'vars';
 body{
+    margin: 0;
     background-color: vars.$ke-blue;
     font-family: vars.$sans;
     color: vars.$ke-white;

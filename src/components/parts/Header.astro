@@ -1,0 +1,32 @@
+---
+import MenuButton from "@components/buttons/MenuButton.astro";
+---
+
+<header id="site-header">
+  <div class="menu-block">
+    <MenuButton>keino estudio</MenuButton>
+    <MenuButton>menú</MenuButton>
+  </div>
+  <div class="menu-block">
+    <MenuButton>acceso clientes</MenuButton>
+    <MenuButton isLink link="mailto:oficina@keinoestudio.com">email</MenuButton>
+  </div>
+</header>
+<style is:inline lang="scss">
+  @use "@styles/vars";
+  header {
+    padding: 1.5rem;
+    width: 100%;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .menu-block {
+    display: flex;
+    gap: 0.4rem;
+  }
+</style>

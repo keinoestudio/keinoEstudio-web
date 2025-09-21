@@ -23,7 +23,7 @@ const {
     <!-- SEO Basics -->
     <meta name="description" content={description} />
     <!-- Page description shown in search results -->
-    <meta name="keywords" content={description} />
+    <meta name="keywords" content={keywords} />
     <!-- Legacy keywords meta (ignored by Google, kept for reference) -->
     <meta name="author" content="Keino Estudio" />
     <!-- Author of the website -->
@@ -75,7 +75,7 @@ const {
     <!-- Page content injected here -->
 
     <!-- Structured Data (JSON-LD) for Google / SEO -->
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",

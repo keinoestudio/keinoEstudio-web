@@ -1,0 +1,35 @@
+---
+const { content, isLink = false, link = "#" } = Astro.props;
+---
+
+<div class:list={["menu-button"]}>
+  {
+    isLink ? (
+      <a href={link}>
+        <slot />
+      </a>
+    ) : (
+      <slot />
+    )
+  }
+</div>
+
+<style lang="scss">
+  @use "@styles/vars";
+  .menu-button {
+    background-color: rgba(vars.$ke-white, 0.05);
+    width: max-content;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px;
+    border-radius: 4px;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    &:hover {
+      background-color: rgba(vars.$ke-black, 0.2);
+    }
+  }
+</style>
