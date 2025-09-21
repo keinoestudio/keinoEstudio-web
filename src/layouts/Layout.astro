@@ -2,6 +2,16 @@
 import "@fontsource-variable/funnel-sans";
 import "@fontsource-variable/funnel-display";
 import "@styles/main.scss";
+
+// Props passed to the layout, with defaults
+const {
+  title = "keino estudio", // Default page title
+  description = "Diseño y desarrollo web audiovisual y publicitario. Desarrollo y mantenimiento WordPress", // Default page description
+  keywords = "landing pages, desarrollo web, desarrollo web a coruña, landing page, consultoría web, wordpress, consultoría wordpress, mantenimiento web, mantenimiento web a coruña, dominio y hosting", // Default keywords (note: not used by Google)
+  nofollow = true, // Determines robots meta tag (noindex, nofollow) for pages that shouldn't be indexed
+  url = "https://keinoestudio.com", // Canonical URL of the page
+  image = "og-keino.png", // Default Open Graph / Twitter image
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -9,8 +19,70 @@ import "@styles/main.scss";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Basics -->
+    <meta name="description" content={description} />
+    <!-- Page description shown in search results -->
+    <meta name="keywords" content={description} />
+    <!-- Legacy keywords meta (ignored by Google, kept for reference) -->
+    <meta name="author" content="Keino Estudio" />
+    <!-- Author of the website -->
+
+    <!-- Open Graph: for social sharing (Facebook, LinkedIn, WhatsApp, etc.) -->
+    <meta property="og:type" content="website" />
+    <!-- Type of content -->
+    <meta property="og:title" content={title} />
+    <!-- Title displayed in social previews -->
+    <meta property="og:description" content={description} />
+    <!-- Description shown in social previews -->
+    <meta property="og:image" content={image} />
+    <!-- Image used when sharing -->
+    <meta property="og:site_name" content="Keino Estudio" />
+    <!-- Website name for branding -->
+    <meta property="og:url" content={url} />
+    <!-- Canonical URL shared -->
+
+    <!-- Twitter Card: for Twitter sharing -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Card type: large image preview -->
+    <meta name="twitter:title" content={title} />
+    <!-- Title for Twitter preview -->
+    <meta name="twitter:description" content={description} />
+    <!-- Description for Twitter preview -->
+    <meta name="twitter:image" content={image} />
+    <!-- Image for Twitter preview -->
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={url} />
+    <!-- Prevents duplicate content issues -->
+
+    <!-- Robots Meta Tag -->
+    <meta
+      name="robots"
+      content={nofollow ? "noindex, nofollow" : "index, follow"}
+    />
+
+    <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" />
+    <!-- Browser tab icon -->
+
+    <!-- Page Title -->
     <title>keino estudio | {Astro.props.title}</title>
+    <!-- Displayed in browser tab and search results -->
   </head>
-  <body><slot /></body>
+  <body>
+    <slot />
+    <!-- Page content injected here -->
+
+    <!-- Structured Data (JSON-LD) for Google / SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Keino Estudio", <!-- Organization name -->
+        "url": "https://keinoestudio.com", <!-- Organization website -->
+        "logo": "https://keinoestudio.com/logo.png" <!-- TODO: Update with actual hosting path -->
+      }
+    </script>
+  </body>
 </html>
