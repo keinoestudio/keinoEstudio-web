@@ -6,14 +6,16 @@ import Keinoestudio from "./icons/Keinoestudio.astro";
 
 <header id="site-header">
   <div class="menu-block">
-    <MenuButton
+    <MenuButton isLink link="/" label="keino estudio inicio"
       ><Keinoestudio style="width: 126px" classList={["desktop"]} /></MenuButton
     >
-    <MenuButton>menú</MenuButton>
+    <MenuButton label="menu"><p>menú</p></MenuButton>
   </div>
   <div class="menu-block">
-    <MenuButton>acceso clientes</MenuButton>
-    <MenuButton isLink link="mailto:oficina@keinoestudio.com"
+    <MenuButton isLink link="/acceso-clientes" label="acceso clientes"
+      ><p>acceso clientes</p></MenuButton
+    >
+    <MenuButton isLink link="mailto:oficina@keinoestudio.com" label="contacto"
       ><EmailIcon style="width:28px" />
     </MenuButton>
   </div>

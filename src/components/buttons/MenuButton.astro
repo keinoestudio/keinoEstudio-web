@@ -1,18 +1,25 @@
 ---
-const { content, isLink = false, link = "#" } = Astro.props;
+type Props = {
+  isLink?: boolean;
+  link?: string;
+  label: string;
+};
+const { isLink = false, link = "#", label } = Astro.props as Props;
 ---
 
-<div class:list={["menu-button"]}>
-  {
-    isLink ? (
-      <a href={link}>
+{
+  isLink ? (
+    <a href={link} aria-label={label}>
+      <div class:list={["menu-button"]}>
         <slot />
-      </a>
-    ) : (
+      </div>
+    </a>
+  ) : (
+    <div class:list={["menu-button"]}>
       <slot />
-    )
-  }
-</div>
+    </div>
+  )
+}
 
 <style lang="scss">
   @use "@styles/vars";
