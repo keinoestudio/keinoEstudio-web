@@ -3,8 +3,9 @@ type Props = {
   isLink?: boolean;
   link?: string;
   label: string;
+  id?: string;
 };
-const { isLink = false, link = "#", label } = Astro.props as Props;
+const { id, isLink, link, label } = Astro.props as Props;
 ---
 
 {
@@ -15,16 +16,17 @@ const { isLink = false, link = "#", label } = Astro.props as Props;
       </div>
     </a>
   ) : (
-    <div class:list={["menu-button"]}>
+    <div id={id} class:list={["menu-button"]}>
       <slot />
     </div>
   )
 }
 
 <style lang="scss">
-  @use "@styles/vars";
+  @use "@styles/vars" as *;
   .menu-button {
-    background-color: rgba(vars.$ke-white, 0.05);
+    background-color: rgba($ke-white, 0.05);
+    color: $ke-white;
     width: max-content;
     height: 48px;
     display: flex;
@@ -36,7 +38,15 @@ const { isLink = false, link = "#", label } = Astro.props as Props;
     cursor: pointer;
     transition: all 200ms ease-in-out;
     &:hover {
-      background-color: rgba(vars.$ke-black, 0.2);
+      background-color: rgba($ke-black, 0.2);
+    }
+  }
+  .menu-opened {
+    color: $ke-blue;
+    background-color: rgba($ke-black, 0.05);
+    transition: all 200ms ease-in-out;
+    &:hover {
+      background-color: rgba($ke-black, 0.2);
     }
   }
 </style>

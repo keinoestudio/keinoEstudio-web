@@ -1,0 +1,92 @@
+---
+
+---
+
+<section id="desktop-menu" class="desktop-menu">
+  <div class="desktop-menu--desktop-menu-background">
+    <div class="desktop-menu-background--column"></div>
+    <div class="desktop-menu-background--column"></div>
+  </div>
+</section>
+<style lang="scss">
+  @use "@styles/vars" as *;
+  .desktop-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 800;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    &--desktop-menu-background {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      .desktop-menu-background {
+        &--column {
+          width: 100%;
+          height: 100vh;
+          height: 100dvh;
+          &:first-child {
+            background-color: rgba($ke-white, 0.9);
+          }
+          &:last-child {
+            background-color: rgba($ke-white, 0.7);
+          }
+        }
+      }
+    }
+  }
+</style>
+<script>
+  import gsap from "gsap";
+  let menuActive = false;
+  const menuOpen = gsap.timeline({ delay: 0.5, paused: true });
+  menuOpen
+    .to(".desktop-menu", {
+      display: "block",
+    })
+    .to(
+      ".menu-block__right .menu-button",
+      { className: "menu-button menu-opened" },
+      0.6
+    )
+
+    .from(
+      ".desktop-menu-background--column:first-child",
+      {
+        transformOrigin: "bottom",
+        scaleY: 0,
+        ease: "power4.inOut",
+        duration: 1.8,
+      },
+      0
+    )
+    .from(
+      ".desktop-menu-background--column:last-child",
+      {
+        transformOrigin: "top",
+        scaleY: 0,
+        ease: "power4.inOut",
+        duration: 1.8,
+      },
+      0
+    )
+    .to(
+      ".menu-block__left .menu-button",
+      { className: "menu-button menu-opened" },
+      1.2
+    )
+    .to("#menu-trigger p", { classList: "close-trigger" }, 1.2);
+  const menuTrigger = document.querySelector("#menu-trigger");
+  const header = document.querySelector("#site-header");
+  menuTrigger?.addEventListener("click", () => {
+    if (!menuActive) {
+      menuOpen.play();
+      menuActive = true;
+    } else {
+      menuOpen.reverse();
+      menuActive = false;
+    }
+  });
+</script>
