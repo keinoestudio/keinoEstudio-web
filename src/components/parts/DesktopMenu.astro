@@ -1,5 +1,37 @@
 ---
+import NavButton from "@components/buttons/NavButton.astro";
 
+type Link = {
+  text: string;
+  url: string;
+};
+type Menu = Link[];
+const menu: Menu = [
+  {
+    text: "Inicio",
+    url: "/",
+  },
+  {
+    text: "Nosotros",
+    url: "/nosotros",
+  },
+  {
+    text: "Servicios",
+    url: "/servicios",
+  },
+  {
+    text: "Proyectos",
+    url: "/proyectos",
+  },
+  {
+    text: "Noticias",
+    url: "/noticias",
+  },
+  {
+    text: "Contacto",
+    url: "/contacto",
+  },
+];
 ---
 
 <section id="desktop-menu" class="desktop-menu">
@@ -7,86 +39,154 @@
     <div class="desktop-menu-background--column"></div>
     <div class="desktop-menu-background--column"></div>
   </div>
-</section>
-<style lang="scss">
-  @use "@styles/vars" as *;
-  .desktop-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 800;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    &--desktop-menu-background {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      .desktop-menu-background {
-        &--column {
-          width: 100%;
-          height: 100vh;
-          height: 100dvh;
-          &:first-child {
-            background-color: rgba($ke-white, 0.9);
+  <div class="desktop-menu--menu-grid">
+    <div class="menu-grid--column">
+      <nav class="desktop-menu--main-nav">
+        <ul class="main-nav--list">
+          {menu.map((i) => <NavButton link={i} />)}
+        </ul>
+      </nav>
+    </div>
+    <div class="menu-grid--column"></div>
+  </div>
+  <style lang="scss">
+    @use "@styles/vars" as *;
+    .desktop-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 800;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      &--desktop-menu-background {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        @include device(xl) {
+        }
+        .desktop-menu-background {
+          &--column {
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            &:first-child {
+              background-color: rgba($ke-white, 0.9);
+            }
+            &:last-child {
+              background-color: rgba($ke-white, 0.7);
+              display: none;
+              @include device(xl) {
+                display: block;
+              }
+            }
           }
-          &:last-child {
-            background-color: rgba($ke-white, 0.7);
+        }
+      }
+      &--menu-grid {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        padding: 126px 24px;
+        top: 0;
+        left: 0;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+
+        @include device(xl) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .menu-grid {
+          &--column {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: end;
+          }
+        }
+      }
+      &--main-nav {
+        .main-nav {
+          &--list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
           }
         }
       }
     }
-  }
-</style>
-<script>
-  import gsap from "gsap";
-  let menuActive = false;
-  const menuOpen = gsap.timeline({ delay: 0.5, paused: true });
-  menuOpen
-    .to(".desktop-menu", {
-      display: "block",
-    })
-    .to(
-      ".menu-block__right .menu-button",
-      { className: "menu-button menu-opened" },
-      0.6
-    )
+  </style>
+  <script>
+    import gsap from "gsap";
+    document.addEventListener("astro:page-load", () => {
+      let menuActive = false;
+      const menuOpen = gsap.timeline({ delay: 0.5, paused: true });
+      menuOpen
+        .to(".desktop-menu", {
+          display: "block",
+        })
+        .to(
+          ".menu-block__right .menu-button",
+          { className: "menu-button menu-opened" },
+          0.6
+        )
 
-    .from(
-      ".desktop-menu-background--column:first-child",
-      {
-        transformOrigin: "bottom",
-        scaleY: 0,
-        ease: "power4.inOut",
-        duration: 1.8,
-      },
-      0
-    )
-    .from(
-      ".desktop-menu-background--column:last-child",
-      {
-        transformOrigin: "top",
-        scaleY: 0,
-        ease: "power4.inOut",
-        duration: 1.8,
-      },
-      0
-    )
-    .to(
-      ".menu-block__left .menu-button",
-      { className: "menu-button menu-opened" },
-      1.2
-    )
-    .to("#menu-trigger p", { classList: "close-trigger" }, 1.2);
-  const menuTrigger = document.querySelector("#menu-trigger");
-  const header = document.querySelector("#site-header");
-  menuTrigger?.addEventListener("click", () => {
-    if (!menuActive) {
-      menuOpen.play();
-      menuActive = true;
-    } else {
-      menuOpen.reverse();
-      menuActive = false;
-    }
-  });
-</script>
+        .from(
+          ".desktop-menu-background--column:first-child",
+          {
+            transformOrigin: "bottom",
+            scaleY: 0,
+            ease: "power4.inOut",
+            duration: 1.8,
+          },
+          0
+        )
+        .from(
+          ".desktop-menu-background--column:last-child",
+          {
+            transformOrigin: "top",
+            scaleY: 0,
+            ease: "power4.inOut",
+            duration: 1.8,
+          },
+          0
+        )
+        .to(
+          ".menu-block__left .menu-button",
+          { className: "menu-button menu-opened" },
+          1.2
+        )
+        .from(
+          ".main-nav--list-element a",
+          {
+            y: 120,
+            opacity: 0,
+            duration: 1,
+            ease: "power4.out",
+            stagger: 0.1,
+          },
+          "<"
+        )
+        .to(
+          ".link-text",
+          {
+            opacity: 1,
+          },
+          "<0.6"
+        );
+      // gsap.from(".main-menu--list-element a", { y: -120 });
+      const menuTrigger = document.querySelector("#menu-trigger");
+      const header = document.querySelector("#site-header");
+      menuTrigger?.addEventListener("click", () => {
+        if (!menuActive) {
+          menuOpen.play();
+          menuActive = true;
+        } else {
+          menuOpen.reverse();
+          menuActive = false;
+        }
+      });
+    });
+  </script>
+</section>

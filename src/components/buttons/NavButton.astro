@@ -1,0 +1,55 @@
+---
+const { link } = Astro.props;
+---
+
+<li class="main-nav--list-element">
+  <a class="main-nav--link" href={link.url}>
+    <span class="link-text">{link.text}</span>
+    <span class="link-text">{link.text}</span>
+  </a>
+</li>
+
+<style lang="scss">
+  @use "@styles/vars" as *;
+  .main-nav {
+    &--list-element {
+      line-height: 4.4rem;
+      color: $ke-blue;
+      display: block;
+      overflow: hidden;
+      a {
+        font-size: 3.8rem;
+        position: relative;
+      }
+    }
+  }
+  .link-text {
+    display: block;
+    &:first-child {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      opacity: 0;
+    }
+  }
+</style>
+<script>
+  import gsap from "gsap";
+  import { SplitText } from "gsap/SplitText";
+
+  document.addEventListener("astro:page-load", () => {
+    gsap.registerPlugin(SplitText);
+
+    const links = document.querySelectorAll(".main-nav--link");
+
+    links.forEach((link) => {
+      const split = new SplitText(link, { type: "chars" });
+      link.addEventListener("mouseenter", () => {
+        gsap.to(split.chars, { y: 100, stagger: 0.01 });
+      });
+      link.addEventListener("mouseleave", () => {
+        gsap.to(split.chars, { y: 0, stagger: 0.01 });
+      });
+    });
+  });
+</script>

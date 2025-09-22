@@ -2,6 +2,9 @@
 import "@fontsource-variable/funnel-sans";
 import "@fontsource-variable/funnel-display";
 import "@styles/main.scss";
+import ClientRouter from "astro/components/ClientRouter.astro";
+import Header from "@components/parts/Header.astro";
+import DesktopMenu from "@components/parts/DesktopMenu.astro";
 
 // Props passed to the layout, with defaults
 const {
@@ -69,8 +72,11 @@ const {
     <!-- Page Title -->
     <title>keino estudio | {Astro.props.title}</title>
     <!-- Displayed in browser tab and search results -->
+    <ClientRouter />
   </head>
   <body>
+    <Header />
+    <DesktopMenu />
     <slot />
     <!-- Page content injected here -->
 
