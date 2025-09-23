@@ -38,5 +38,19 @@ import Keinoestudio from "@components/icons/Keinoestudio.astro";
   .menu-block {
     display: flex;
     gap: 0.4rem;
+    &__right {
+      display: none;
+      @include device(xl) {
+        display: flex;
+      }
+    }
+    &__left {
+      width: 100%;
+      justify-content: space-between;
+      @include device(xl) {
+        width: max-content;
+        justify-content: flex-start;
+      }
+    }
   }
 </style>
