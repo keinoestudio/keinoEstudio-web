@@ -1,15 +1,23 @@
 ---
 import MenuButton from "@components/buttons/MenuButton.astro";
 import EmailIcon from "@components/icons/EmailIcon.astro";
+import K from "@components/icons/K.astro";
 import Keinoestudio from "@components/icons/Keinoestudio.astro";
+import Cross from "@components/icons/Cross.astro";
 ---
 
 <header id="site-header">
   <div class="menu-block menu-block__left">
     <MenuButton isLink link="/" label="keino estudio inicio"
-      ><Keinoestudio style="width: 126px" classList={["desktop"]} /></MenuButton
+      ><K style="width: 16px" classList={["mobile"]} />
+      <Keinoestudio style="width: 126px" classList={["desktop"]} /></MenuButton
     >
-    <MenuButton id="menu-trigger" label="menu"><p>menú</p></MenuButton>
+    <MenuButton id="menu-trigger" label="menu"
+      ><p class="menu-menu">menú</p><Cross
+        style="width: 18px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0"
+        classList={["menu-cross"]}
+      /></MenuButton
+    >
   </div>
   <div class="menu-block menu-block__right">
     <MenuButton isLink link="/acceso-clientes" label="acceso clientes"

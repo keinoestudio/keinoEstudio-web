@@ -8,5 +8,14 @@ body{
     color: vars.$ke-white;
 }
 .desktop{
+    display: none;
+    @include vars.device(xl){
+        display: block;
+    }
+}
+.mobile{
     display: block;
+    @include vars.device(xl){
+        display: none;
+    }
 }
