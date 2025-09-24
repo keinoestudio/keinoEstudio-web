@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { swapFunctions } from "astro:transitions/client";
+import menuTrigger from "@scripts/menuTrigger";
 export default function transitionFunction() {
   function mySwap(doc: Document) {
     swapFunctions.deselectScripts(doc);
@@ -61,12 +62,17 @@ export default function transitionFunction() {
     const transitionEntry = gsap.timeline();
 
     transitionExit
-      .to(".transition-background--background-column.column-1", {
-        transformOrigin: "bottom",
-        scaleY: 1,
-        duration: 1,
-        ease: "power4.inOut",
-      })
+      .to(".menu-block__left .menu-button", { className: "menu-button" }, 0)
+      .to(
+        ".transition-background--background-column.column-1",
+        {
+          transformOrigin: "bottom",
+          scaleY: 1,
+          duration: 1,
+          ease: "power4.inOut",
+        },
+        "<"
+      )
       .to(
         ".transition-background--background-column.column-2",
         {

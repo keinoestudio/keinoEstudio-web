@@ -93,5 +93,13 @@ const {
       }
     </script>
     <Transition />
+    <script>
+      import menuTrigger from "@scripts/menuTrigger";
+      import transitionFunction from "@scripts/defaultTransition";
+      document.addEventListener("astro:page-load", () => {
+        menuTrigger();
+        transitionFunction();
+      });
+    </script>
   </body>
 </html>
