@@ -5,6 +5,7 @@ import "@styles/main.scss";
 import ClientRouter from "astro/components/ClientRouter.astro";
 import Header from "@components/parts/Header.astro";
 import DesktopMenu from "@components/parts/DesktopMenu.astro";
+import Transition from "@components/parts/Transition.astro";
 
 // Props passed to the layout, with defaults
 const {
@@ -91,5 +92,6 @@ const {
         "logo": "https://keinoestudio.com/logo.png" <!-- TODO: Update with actual hosting path -->
       }
     </script>
+    <Transition />
   </body>
 </html>

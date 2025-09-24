@@ -1,0 +1,62 @@
+---
+import TransitionLogo from "@components/icons/TransitionLogo.astro";
+---
+
+<div class="transition-body">
+  <div class="transition-body--transition-background">
+    <div class="transition-background--background-column column-1"></div>
+    <div class="transition-background--background-column column-2"></div>
+  </div>
+  <TransitionLogo />
+  <script>
+    import transitionFunction from "@scripts/defaultTransition";
+    document.addEventListener("astro:page-load", () => {
+      transitionFunction();
+    });
+  </script>
+</div>
+<style lang="scss">
+  @use "@styles/vars" as *;
+  .transition-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    z-index: 900;
+    &--transition-background {
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+
+      @include device(xl) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .transition-background {
+        &--background-column {
+          width: 100%;
+          height: 100vh;
+          height: 100dvh;
+          background-color: $ke-black;
+          transform: scaleY(0);
+        }
+      }
+    }
+  }
+</style>

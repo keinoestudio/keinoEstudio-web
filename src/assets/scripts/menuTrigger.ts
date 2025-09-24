@@ -1,5 +1,5 @@
 import gsap from "gsap";
-export default function menuTrigger(): void {
+export default function menuTrigger(): gsap.core.Timeline {
   let menuActive = false;
   const menuOpen = gsap.timeline({ delay: 0.5, paused: true });
   menuOpen
@@ -82,4 +82,5 @@ export default function menuTrigger(): void {
       menuActive = false;
     }
   });
+  return menuOpen;
 }
