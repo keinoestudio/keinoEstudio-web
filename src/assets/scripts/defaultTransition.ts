@@ -63,6 +63,7 @@ export default function transitionFunction() {
 
     transitionExit
       .to(".menu-block__left .menu-button", { className: "menu-button" }, 0)
+      .to(".menu-block__right .menu-button", { className: "menu-button" }, 0)
       .to(
         ".transition-background--background-column.column-1",
         {

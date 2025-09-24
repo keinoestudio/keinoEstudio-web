@@ -1,0 +1,80 @@
+---
+
+---
+
+<section class="social-media-menu">
+  <nav class="social-media-menu--nav">
+    <ul class="social-media-menu--list">
+      <li class="social-media-menu--item">
+        <a
+          class="social-media-menu--link"
+          href="https://www.linkedin.com/company/keinoestudio"
+          target="_blank">IN</a
+        >
+      </li>
+      <li class="social-media-menu--item">
+        <a
+          class="social-media-menu--link"
+          href="https://www.instagram.com/keinoestudio/"
+          target="_blank">IG</a
+        >
+      </li>
+      <li class="social-media-menu--item">
+        <a
+          class="social-media-menu--link"
+          href="https://github.com/keinoestudio/"
+          target="_blank">GH</a
+        >
+      </li>
+      <li class="social-media-menu--item">
+        <a
+          class="social-media-menu--link"
+          href="https://www.behance.net/keinoestudio"
+          target="_blank">BE</a
+        >
+      </li>
+      <li class="social-media-menu--item">
+        <a
+          class="social-media-menu--link"
+          href="https://www.youtube.com/@keinoestudio"
+          target="_blank">YT</a
+        >
+      </li>
+    </ul>
+  </nav>
+</section>
+<style lang="scss">
+  @use "@styles/vars" as *;
+  .social-media-menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: start;
+    @include device(xl) {
+      justify-content: end;
+    }
+
+    &--nav {
+      position: relative;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+    &--list {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      @include device(xl) {
+        gap: 48px;
+      }
+    }
+    &--item {
+      color: $ke-blue;
+      font-size: 2rem;
+      line-height: 2.4rem;
+      @include device(xl) {
+        font-size: 2.2rem;
+        line-height: 2.6rem;
+      }
+    }
+  }
+</style>
