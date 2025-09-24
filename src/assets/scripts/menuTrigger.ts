@@ -48,12 +48,31 @@ export default function menuTrigger(): void {
       },
       0.6
     )
+    .from(
+      ".social-media-menu--item",
+      {
+        y: 120,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power4.out",
+        stagger: 0.1,
+      },
+      0.6
+    )
+    .from(
+      ".social-media-menu--item p:last-child",
+      {
+        opacity: 0,
+        duration: 0,
+      },
+      1.2
+    )
     .to(
       ".link-text",
       {
         opacity: 1,
       },
-      "<0.8"
+      1.2
     )
     .to(
       ".menu-cross",

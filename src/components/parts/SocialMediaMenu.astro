@@ -9,35 +9,35 @@
         <a
           class="social-media-menu--link"
           href="https://www.linkedin.com/company/keinoestudio"
-          target="_blank">IN</a
+          target="_blank"><p>LI</p><p>LI</p></a
         >
       </li>
       <li class="social-media-menu--item">
         <a
           class="social-media-menu--link"
           href="https://www.instagram.com/keinoestudio/"
-          target="_blank">IG</a
+          target="_blank"><p>IG</p><p>IG</p></a
         >
       </li>
       <li class="social-media-menu--item">
         <a
           class="social-media-menu--link"
           href="https://github.com/keinoestudio/"
-          target="_blank">GH</a
+          target="_blank"><p>GH</p><p>GH</p></a
         >
       </li>
       <li class="social-media-menu--item">
         <a
           class="social-media-menu--link"
           href="https://www.behance.net/keinoestudio"
-          target="_blank">BE</a
+          target="_blank"><p>BE</p><p>BE</p></a
         >
       </li>
       <li class="social-media-menu--item">
         <a
           class="social-media-menu--link"
           href="https://www.youtube.com/@keinoestudio"
-          target="_blank">YT</a
+          target="_blank"><p>YT</p><p>YT</p></a
         >
       </li>
     </ul>
@@ -56,8 +56,14 @@
 
     &--nav {
       position: relative;
+      display: flex;
+      align-items: end;
       overflow: hidden;
       margin-top: 3rem;
+      height: 2rem;
+      @include device(xl) {
+        height: 2.4rem;
+      }
     }
     &--list {
       display: flex;
@@ -77,4 +83,42 @@
       }
     }
   }
+  .social-media-menu--link {
+    position: relative;
+    display: block;
+  }
+  .social-media-menu--link p:last-child {
+    position: absolute;
+    top: -50px;
+  }
 </style>
+<script>
+  import gsap from "gsap";
+  import { SplitText } from "gsap/SplitText";
+
+  document.addEventListener("astro:page-load", () => {
+    gsap.registerPlugin(SplitText);
+
+    const links = document.querySelectorAll(".social-media-menu--link");
+
+    links.forEach((link) => {
+      const split = new SplitText(link, { type: "chars" });
+      link.addEventListener("mouseenter", () => {
+        gsap.to(split.chars, {
+          y: 50,
+          stagger: {
+            amount: 0.1,
+          },
+        });
+      });
+      link.addEventListener("mouseleave", () => {
+        gsap.to(split.chars, {
+          y: 0,
+          stagger: {
+            amount: 0.1,
+          },
+        });
+      });
+    });
+  });
+</script>
