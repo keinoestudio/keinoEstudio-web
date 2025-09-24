@@ -1,0 +1,37 @@
+---
+type Props = {
+  title: string;
+};
+
+const title = Astro.props.title;
+---
+
+<h1 class="page-title-text">
+  {title}.
+</h1>
+<style lang="scss">
+  @use "@styles/vars" as *;
+  h1 {
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    font-weight: 600;
+    font-family: $display;
+    visibility: hidden;
+    @include device(sm) {
+      font-size: 3rem;
+      line-height: 3.3rem;
+    }
+    @include device(lg) {
+      font-size: 3.6rem;
+      line-height: 4rem;
+    }
+    @include device(xl) {
+      font-size: 4rem;
+      line-height: 4.2rem;
+    }
+    @include device(xxl) {
+      font-size: 4.2rem;
+      line-height: 4.6rem;
+    }
+  }
+</style>

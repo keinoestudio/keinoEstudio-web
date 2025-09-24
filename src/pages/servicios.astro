@@ -1,12 +1,18 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import StandarPage from "@components/parts/StandardPage.astro";
+const pageData = {
+  title: "Servicios",
+};
 ---
 
 <Layout
-  title="Inicio"
+  title={pageData.title}
   description="Diseño y desarrollo web audiovisual y publicitario. Desarrollo y mantenimiento WordPress"
   keywords="landing pages, desarrollo web, desarrollo web a coruña, landing page, consultoría web, wordpress, consultoría wordpress, mantenimiento web, mantenimiento web a coruña, dominio y hosting"
   nofollow="true,"
   url="https://keinoestudio.com"
   image="og-keino.png"
-/>
+>
+  <StandarPage title={pageData.title} />
+</Layout>

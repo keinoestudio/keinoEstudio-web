@@ -3,9 +3,11 @@ import "@fontsource-variable/funnel-sans";
 import "@fontsource-variable/funnel-display";
 import "@styles/main.scss";
 import ClientRouter from "astro/components/ClientRouter.astro";
+import { fade } from "astro:transitions";
 import Header from "@components/parts/Header.astro";
 import DesktopMenu from "@components/parts/DesktopMenu.astro";
 import Transition from "@components/parts/Transition.astro";
+import Footer from "@components/parts/Footer.astro";
 
 // Props passed to the layout, with defaults
 const {
@@ -79,6 +81,7 @@ const {
     <Header />
     <DesktopMenu />
     <slot />
+    <Footer />
     <!-- Page content injected here -->
     <!-- Transition block -->
 
@@ -92,14 +95,16 @@ const {
         "logo": "https://keinoestudio.com/logo.png" <!-- TODO: Update with actual hosting path -->
       }
     </script>
-    <Transition />
     <script>
       import menuTrigger from "@scripts/menuTrigger";
       import transitionFunction from "@scripts/defaultTransition";
+      import pageTitle from "@scripts/pageTitle";
       document.addEventListener("astro:page-load", () => {
         menuTrigger();
         transitionFunction();
+        pageTitle();
       });
     </script>
+    <Transition />
   </body>
 </html>

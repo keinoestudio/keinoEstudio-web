@@ -1,6 +1,6 @@
 ---
 import NavButton from "@components/buttons/NavButton.astro";
-import SocialMediaMenu from "./SocialMediaMenu.astro";
+import SocialMediaMenu from "@components/parts/SocialMediaMenu.astro";
 
 type Link = {
   text: string;
@@ -75,10 +75,10 @@ const menu: Menu = [
             height: 100vh;
             height: 100dvh;
             &:first-child {
-              background-color: rgba($ke-white, 0.9);
+              background-color: rgba($ke-white, 1);
             }
             &:last-child {
-              background-color: rgba($ke-white, 0.7);
+              background-color: rgba($ke-white, 0.95);
               display: none;
               @include device(xl) {
                 display: block;

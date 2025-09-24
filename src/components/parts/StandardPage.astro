@@ -1,0 +1,25 @@
+---
+import PageTitle from "@components/parts/PageTitle.astro";
+import { fade } from "astro:transitions";
+
+type Props = {
+  title: string;
+};
+const title = Astro.props.title;
+---
+
+<section transition:animate={fade({ duration: "0.8s" })} class="standard-page">
+  <PageTitle title={title} />
+</section>
+<style lang="scss">
+  @use "@styles/vars" as *;
+  .standard-page {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 96px 24px;
+    @include device(xl) {
+      padding: 126px 24px;
+    }
+  }
+</style>
