@@ -9,14 +9,15 @@ const title = Astro.props.title;
 <h1 class="page-title-text">
   {title}.
 </h1>
-<style lang="scss">
+<style is:global lang="scss">
   @use "@styles/vars" as *;
-  h1 {
+  .page-title-text {
     font-size: 2.4rem;
     line-height: 2.8rem;
     font-weight: 600;
     font-family: $display;
     visibility: hidden;
+    grid-area: heading;
     @include device(sm) {
       font-size: 3rem;
       line-height: 3.3rem;
@@ -33,5 +34,10 @@ const title = Astro.props.title;
       font-size: 4.2rem;
       line-height: 4.6rem;
     }
+  }
+  .title-chars,
+  .title-words {
+    display: inline-block;
+    white-space: keep-all;
   }
 </style>

@@ -1,6 +1,5 @@
 ---
 import PageTitle from "@components/parts/PageTitle.astro";
-import { fade } from "astro:transitions";
 
 type Props = {
   title: string;
@@ -8,18 +7,33 @@ type Props = {
 const title = Astro.props.title;
 ---
 
-<section transition:animate={fade({ duration: "0.8s" })} class="standard-page">
+<section class="standard-page">
   <PageTitle title={title} />
+  <div class="poco-texto">Esto es un poco de texto</div>
+  <div class="mucho-texto">
+    Esto es un poco de mucho trozo de algo mas largo de texto
+  </div>
 </section>
-<style lang="scss">
+<style is:global lang="scss">
   @use "@styles/vars" as *;
   .standard-page {
+    visibility: hidden;
     width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
     padding: 96px 24px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "heading heading heading heading heading"
+      "aside aside content content content";
     @include device(xl) {
       padding: 126px 24px;
     }
+  }
+  .poco-texto {
+    grid-area: aside;
+  }
+  .mucho-texto {
+    grid-area: content;
   }
 </style>

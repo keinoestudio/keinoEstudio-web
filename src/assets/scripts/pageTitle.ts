@@ -1,16 +1,18 @@
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 gsap.registerPlugin(SplitText);
-
+let titleOpacity: gsap.core.Tween;
+let heroSplit: SplitText;
 export default function titleAnimation() {
-  gsap.from(".page-title-text", {
+  titleOpacity = gsap.from(".page-title-text", {
     autoAlpha: 0,
     delay: 1,
   });
-  let heroSplit = SplitText.create(".page-title-text", {
-    type: "chars",
+  heroSplit = SplitText.create(".page-title-text", {
+    type: "chars words",
     mask: "chars",
     charsClass: "title-chars",
+    wordsClass: "title-words",
     autoSplit: true,
     onSplit: (self) => {
       gsap.from(self.chars, {

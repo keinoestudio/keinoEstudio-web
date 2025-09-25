@@ -95,7 +95,7 @@ import LogoKeino from "@components/icons/LogoKeino.astro";
           <a class="site-footer--legal-link" href="/legal">Aviso legal</a>
         </li>
         <li class="site-footer--legal-list">
-          <a class="site-footer--legal-link" href="/privacy"
+          <a class="site-footer--legal-link" href="/politica-privacidad"
             >Política de privacidad</a
           >
         </li>
@@ -111,30 +111,31 @@ import LogoKeino from "@components/icons/LogoKeino.astro";
   import gsap from "gsap";
   import { SplitText } from "gsap/SplitText";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  document.addEventListener("astro:page-load", () => {
+    gsap.registerPlugin(SplitText, ScrollTrigger);
 
-  gsap.registerPlugin(SplitText, ScrollTrigger);
-
-  let split = SplitText.create(".footer-info--text", {
-    type: "words, chars, lines",
-    mask: "words",
-    autoSplit: true,
-    onSplit: (self) => {
-      return gsap.from(self.chars, {
-        y: 150,
-        autoAlpha: 0,
-        stagger: {
-          amount: 0.5,
-          from: "random",
-        },
-        scrollTrigger: {
-          trigger: ".footer-info--text",
-          start: "top 80%", // Empieza cuando el texto esté al 80% de la ventana
-          end: "bottom 60%", // Final opcional
-          toggleActions: "play none none reverse",
-          once: true, // Ejecuta solo una vez
-        },
-      });
-    },
+    let split = SplitText.create(".footer-info--text", {
+      type: "words, chars, lines",
+      mask: "words",
+      autoSplit: true,
+      onSplit: (self) => {
+        return gsap.from(self.chars, {
+          y: 150,
+          autoAlpha: 0,
+          stagger: {
+            amount: 0.5,
+            from: "random",
+          },
+          scrollTrigger: {
+            trigger: ".footer-info--text",
+            start: "top 80%", // Empieza cuando el texto esté al 80% de la ventana
+            end: "bottom 60%", // Final opcional
+            toggleActions: "play none none reverse",
+            once: true, // Ejecuta solo una vez
+          },
+        });
+      },
+    });
   });
 </script>
 <style lang="scss">

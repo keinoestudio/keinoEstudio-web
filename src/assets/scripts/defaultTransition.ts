@@ -1,6 +1,5 @@
 import gsap from "gsap";
 import { swapFunctions } from "astro:transitions/client";
-import menuTrigger from "@scripts/menuTrigger";
 export default function transitionFunction() {
   function mySwap(doc: Document) {
     swapFunctions.deselectScripts(doc);

@@ -6,6 +6,7 @@ body{
     background-color: vars.$ke-blue;
     font-family: vars.$sans;
     color: vars.$ke-white;
+    
 }
 .desktop{
     display: none;
@@ -19,7 +20,7 @@ body{
         display: none;
     }
 }
-  .footer-logo {
-    color: vars.$ke-blue;
-    width: 200px;
-  }
+.footer-logo {
+color: vars.$ke-blue;
+width: 200px;
+}

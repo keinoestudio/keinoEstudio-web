@@ -3,7 +3,7 @@ import "@fontsource-variable/funnel-sans";
 import "@fontsource-variable/funnel-display";
 import "@styles/main.scss";
 import ClientRouter from "astro/components/ClientRouter.astro";
-import { fade } from "astro:transitions";
+import { slide } from "astro:transitions";
 import Header from "@components/parts/Header.astro";
 import DesktopMenu from "@components/parts/DesktopMenu.astro";
 import Transition from "@components/parts/Transition.astro";
@@ -99,10 +99,12 @@ const {
       import menuTrigger from "@scripts/menuTrigger";
       import transitionFunction from "@scripts/defaultTransition";
       import pageTitle from "@scripts/pageTitle";
+      import standarPageEntry from "@scripts/StandardPageVT";
       document.addEventListener("astro:page-load", () => {
         menuTrigger();
         transitionFunction();
         pageTitle();
+        standarPageEntry();
       });
     </script>
     <Transition />
