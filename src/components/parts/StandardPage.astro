@@ -1,39 +1,51 @@
 ---
 import PageTitle from "@components/parts/PageTitle.astro";
+import PageContent from "./PageContent.astro";
+import PageNav from "./PageNav.astro";
+import type { ArticleItems } from "@pages/politica-privacidad.astro";
 
 type Props = {
   title: string;
+  data: ArticleItems;
 };
-const title = Astro.props.title;
+const { title, data } = Astro.props;
 ---
 
-<section class="standard-page">
+<section class="protect-animation standard-page">
   <PageTitle title={title} />
-  <div class="poco-texto">Esto es un poco de texto</div>
-  <div class="mucho-texto">
-    Esto es un poco de mucho trozo de algo mas largo de texto
+  <div class="standard-page--nav">
+    <PageNav data={data} />
   </div>
-</section>
-<style is:global lang="scss">
-  @use "@styles/vars" as *;
-  .standard-page {
-    visibility: hidden;
-    width: 100%;
-    padding: 96px 24px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "heading heading heading heading heading"
-      "aside aside content content content";
-    @include device(xl) {
-      padding: 126px 24px;
+  <div class="standard-page--content">
+    <PageContent data={data} />
+  </div>
+  <style lang="scss">
+    @use "@styles/vars" as *;
+    .standard-page {
+      visibility: hidden;
+      width: 100%;
+      padding: 96px 24px;
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-areas:
+        "heading"
+        "text-area";
+
+      @include device(xl) {
+        padding: 126px 24px;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas:
+          "heading heading heading heading heading"
+          "aside aside text-area text-area text-area";
+        column-gap: 4rem;
+      }
+      &--nav {
+        grid-area: aside;
+      }
+      &--content {
+        grid-area: text-area;
+      }
     }
-  }
-  .poco-texto {
-    grid-area: aside;
-  }
-  .mucho-texto {
-    grid-area: content;
-  }
-</style>
+  </style>
+</section>

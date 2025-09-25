@@ -28,28 +28,30 @@ import Cross from "@components/icons/Cross.astro";
     </MenuButton>
   </div>
   <script>
-    let trigger = 200;
-    let init = 0;
-    let header = document.querySelector("#site-header") as HTMLElement;
-    if (header != undefined) {
-      window.addEventListener("scroll", (event) => {
-        let newPos = window.scrollY;
-        if (newPos > trigger) {
-          if (newPos > init) {
-            init = newPos;
-            header.style.opacity = "0";
-            header.style.top = "-100px";
-          } else if (newPos < init) {
-            init = newPos;
-            header.style.opacity = "1";
-            header.style.top = "0px";
-          } else {
-            header.style.opacity = "1";
-            header.style.top = "0px";
+    document.addEventListener("astro:page-load", () => {
+      let trigger = 200;
+      let init = 0;
+      let header = document.querySelector("#site-header") as HTMLElement;
+      if (header != undefined) {
+        window.addEventListener("scroll", (event) => {
+          let newPos = window.scrollY;
+          if (newPos > trigger) {
+            if (newPos > init) {
+              init = newPos;
+              header.style.opacity = "0";
+              header.style.top = "-100px";
+            } else if (newPos < init) {
+              init = newPos;
+              header.style.opacity = "1";
+              header.style.top = "0px";
+            } else {
+              header.style.opacity = "1";
+              header.style.top = "0px";
+            }
           }
-        }
-      });
-    }
+        });
+      }
+    });
   </script>
 </header>
 <style lang="scss">

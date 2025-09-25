@@ -1,0 +1,58 @@
+---
+import PageButton from "@components/buttons/PageButton.astro";
+import type { ArticleItems } from "@pages/politica-privacidad.astro";
+type Props = {
+  data: ArticleItems;
+};
+const { data } = Astro.props;
+---
+
+<section class="page-nav">
+  <nav class="page-nav--nav">
+    <ul class="page-nav--list">
+      {data.map((e) => <PageButton data={e} />)}
+    </ul>
+  </nav>
+</section>
+
+<style lang="scss">
+  @use "@styles/vars" as *;
+  .page-nav {
+    position: relative;
+    width: 100%;
+    display: none;
+    padding: 1.2rem 0;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    @include device(xl) {
+      display: flex;
+    }
+
+    &--nav {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+    &--list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    &--item {
+      padding: 24px 0 12px;
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      align-items: end;
+      border-bottom: 1px solid $ke-white;
+      font-family: $display;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+</style>

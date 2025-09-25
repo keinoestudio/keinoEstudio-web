@@ -4,6 +4,82 @@ import StandarPage from "@components/parts/StandardPage.astro";
 const pageData = {
   title: "Política de privacidad",
 };
+type ContentItems = {
+  class: string;
+  text: string;
+};
+export type Article = {
+  title: string;
+  id: string;
+  content: ContentItems[];
+};
+export type ArticleItems = Article[];
+const items: ArticleItems = [
+  {
+    title: "Introducción",
+    id: "introduccion",
+    content: [
+      {
+        class: "regular",
+        text: "“Keino Estudio” se encuentra profundamente comprometido con el cumplimiento de la normativa española y europea de protección de datos de carácter personal, y garantiza el cumplimiento íntegro de las obligaciones dispuestas, así como la implementación de las medidas de seguridad dispuestas en el Reglamento General de Protección de Datos (RGPD) (UE) 2016/679, de 27 de abril, y en la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPD y GDD, en adelante LOPD).",
+      },
+      {
+        class: "regular",
+        text: "De conformidad con estas normativas, informamos que la utilización de nuestra web puede requerir que se faciliten ciertos datos personales a través de formularios de contacto, o mediante el envío de emails, y que éstos serán objeto de tratamiento por “Keino Estudio”, Responsable del tratamiento, cuyos datos son:",
+      },
+      {
+        class: "dotted-num",
+        text: "Denominación Social: David Ángel Rubio Fuentes",
+      },
+      {
+        class: "dotted-num",
+        text: "NIF: 71526701J",
+      },
+      {
+        class: "dotted-num",
+        text: "Domicilio Social: C/ Emilio González López, 32, 15011, A Coruña - España",
+      },
+      {
+        class: "dotted-num",
+        text: "Teléfono: 881 170 845",
+      },
+      {
+        class: "dotted-num",
+        text: "eMail: oficina@keinoestudio.com",
+      },
+    ],
+  },
+  {
+    title: "Obtención y Tratamiento de Datos Personales",
+    id: "obtencion-tratamiento",
+    content: [
+      {
+        class: "regular",
+        text: "Un dato personal es cualquier información relativa a una persona: nombre, email, domicilio, teléfono, NIF/NIE... Adicionalmente, cuando un Usuario visita nuestro sitio web, determinada información se almacena automáticamente por motivos técnicos, como la dirección IP asignada por su proveedor de acceso a Internet.",
+      },
+      {
+        class: "regular",
+        text: "“Keino Estudio”, como Responsable del Tratamiento, tiene el deber de informar a los Usuarios de su sitio web acerca de la recogida de datos de carácter personal que pueden llevarse a cabo, bien sea mediante el envío de correo electrónico o al cumplimentar los formularios incluidos en el sitio web.",
+      },
+      {
+        class: "regular",
+        text: "Se obtendrán únicamente los datos precisos para poder realizar el servicio contratado, o para poder responder adecuadamente a la petición de información realizada por el Usuario. Los datos recabados son identificativos y corresponden a un mínimo razonable para poder llevar a término la actividad realizada. En particular, no se recogen datos especialmente protegidos en ningún momento. En ningún caso se realizará un uso diferente de los datos que la finalidad para los que han sido recabados.",
+      },
+      {
+        class: "underlined",
+        text: "Contacto por email:",
+      },
+      {
+        class: "regular",
+        text: "Finalidad: Dar contestación a su solicitud de información realizada a través de nuestro correo electrónico.",
+      },
+      {
+        class: "regular",
+        text: "Legitimación: La base jurídica que legitima este tratamiento es el consentimiento del Usuario, que podrá revocar en cualquier momento.",
+      },
+    ],
+  },
+];
 ---
 
 <Layout
@@ -14,5 +90,5 @@ const pageData = {
   url="https://keinoestudio.com"
   image="og-keino.png"
 >
-  <StandarPage title={pageData.title} />
+  <StandarPage title={pageData.title} data={items} />
 </Layout>

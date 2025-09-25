@@ -99,12 +99,12 @@ const {
       import menuTrigger from "@scripts/menuTrigger";
       import transitionFunction from "@scripts/defaultTransition";
       import pageTitle from "@scripts/pageTitle";
-      import standarPageEntry from "@scripts/StandardPageVT";
+      import protectAnimation from "@scripts/protectAnimation";
       document.addEventListener("astro:page-load", () => {
         menuTrigger();
         transitionFunction();
         pageTitle();
-        standarPageEntry();
+        protectAnimation();
       });
     </script>
     <Transition />
